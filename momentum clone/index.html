@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Momentum App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- It creates a new script tag that loads the script from the file todo.js. -->
+    <script src="todo.js" defer></script>
+</head>
+
+
+<body>
+    <div class="main">
+        <span id="time">17:00:00</span>
+        <h1>
+            <span id="greeting">Good morning, </span>
+            <span id="name"></span>
+        </h1>
+        <h2>What is your main focus for today?</h2>
+        <h2 id="focus"></h2>
+    </div>
+
+    <form id="todo-form">
+      <input class="todolists" type="text" placeholder="Write To-do" required />
+    </form>
+    <ul id="todo-list"></ul>
+
+
+    <!-- 1. The div tag is used to create a div container.
+    2. The quote class is used to style the quote.
+    3. The content id is used to create a quote content.
+    4. The author id is used to create a quote author. -->
+    <div class="container">
+    <div class="quote">
+        <h5 id="content">Quote Content Here</h5>
+        <h6 id="author">Quote Author Here</h6>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

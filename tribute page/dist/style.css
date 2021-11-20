@@ -1,0 +1,23 @@
+body {
+  font-family: 'Jura', sans-serif;
+  background-color: black;
+  color: white;
+  padding: 25px 50px 75px 50px;
+}
+
+#image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  border-radius: 100%;
+  padding-bottom: 50px;
+}
+
+#img-caption {
+  padding: 25px 125px; 
+}
+
+#headline {
+  padding-bottom: 50px;
+}

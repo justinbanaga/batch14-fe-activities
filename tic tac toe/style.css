@@ -1,0 +1,373 @@
+/* --- Universal Box Sizing with Inheritance --- */
+
+@font-face {
+  font-family: "Game of Thrones";
+  src: url(Game\ of\ Thrones.ttf);
+}
+
+
+html {
+  box-sizing: border-box;
+
+  background: url("./img/2.jpg")
+  no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+:root {
+  --cell-size: 512px;
+  --grid-gap: 12px;
+  --h1-font-size: 32px;
+  --h1-span-font-size: 24px;
+  --current-status-font-size: 24px;
+
+  --current-beast-img-height: 512px;
+
+  --winning-beast-img-width: 512px;
+
+  --winning-msg-font-size: 48px;
+  --reset-btn-font-size: 30px;
+
+  --check-btn-font-size: 30px;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --cell-size: 120px;
+    --grid-gap: 15px;
+    --h1-font-size: 56px;
+    --h1-span-font-size: 40px;
+    --current-status-font-size: 45px;
+    --current-beast-img-height: 200px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --h1-font-size: 64px;
+    --h1-span-font-size: 48px;
+    --winning-msg-font-size: 72px;
+    --reset-btn-font-size: 48px;
+    --check-btn-font-size: 48px;
+    --winning-beast-img-width: 512px;
+  }
+}
+/* --- Styles --- */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Game of Thrones", cursive;
+  color: #2c2828;
+}
+
+h1 {
+  position: relative;
+  max-width: 100%;
+  margin: 15px auto 5%;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: var(--h1-font-size);
+  text-shadow: 3px 3px #0078d3;
+}
+h1::before, h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 650%;
+  transform: translateY(-50%);
+}
+h1::before {  
+  background-image: url("./SVG/game of thrones, game, thrones, king, walker, north, winter, series.svg");
+
+  left: 0;
+  width: 512px;
+  height: 512px;
+
+}
+
+@media (min-width: 1024px) {
+  h1::before {
+     left: -200px;
+  }
+}
+h1::after {
+  background-image: url("./SVG/game of thrones, game, thrones, series, character, avatar, jon snow.svg");
+  right: 0;
+  width: 512px;
+  height: 512px;
+  
+}
+@media (min-width: 1024px) {
+  h1::after {
+    right: -200px;
+  }
+}
+h1 span {
+  display: block;
+  font-size: var(--h1-span-font-size);
+}
+@media (min-width: 1024px) {
+  h1 span {
+    display: inline;
+  }
+}
+
+h1,
+p {
+  letter-spacing: 3px;
+  margin-top: -120px;
+}
+
+.current-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+@media (min-width: 1024px) {
+  .current-status {
+    margin: 0px;
+  }
+}
+.current-status p {
+  margin: 0 0px 0 0;
+  font-size: var(--current-status-font-size);
+  font-weight: 900;
+  color: #FFE2CF;
+  text-shadow: 4px 4px #041256;
+}
+.current-status img {
+  width: auto;
+  height: var(--current-beast-img-height);
+  transform:scaleX(-1)
+   
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(30px, 1fr));
+  grid-template-rows: repeat(3, minmax(30px, 1fr));
+  grid-gap: var(--grid-gap);
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  margin: 0 auto 15px;
+}
+.board.fire .cell:not(.ice):not(.fire):hover::before, .board.ice .cell:not(.ice):not(.fire):hover::before {
+  content: "";
+  width: 70%;
+  height: 70%;
+  display: block;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-size: contain;
+  opacity: 50%;
+}
+
+
+.board.fire .cell:not(.ice):hover::before {
+  background-image: url("./SVG/game of thrones, game, thrones, series, character, avatar, dragon.svg");
+   
+}
+.board.ice .cell:not(.fire):hover::before {
+  background-image: url("./SVG/game of thrones, game, thrones, series, character, avatar, ice, dragon.svg");
+ 
+}
+
+.cell {
+  cursor: pointer;
+  position: relative;
+  background-color: #292627;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+}
+.cell:hover {
+  opacity: 1;
+}
+.cell.ice, .cell.fire {
+  opacity: 1;
+  position: relative;
+  cursor: not-allowed;
+}
+.cell.ice::before, .cell.fire::before {
+  content: "";
+  width: 70%;
+  height: 70%;
+  display: block;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-size: contain;
+}
+.cell.ice::before {
+  background-image: url("./SVG/game of thrones, game, thrones, series, character, avatar, ice, dragon.svg");
+}
+.cell.fire::before {
+  background-image: url("./SVG/game of thrones, game, thrones, series, character, avatar, dragon.svg");
+}
+
+.game-end-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0d1021;
+}
+.game-end-overlay.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.winning-message {
+  margin: -50px 0 20px;
+  
+}
+.winning-message img {
+  width: var(--winning-beast-img-width);
+}
+.winning-message p {
+  font-size: var(--winning-msg-font-size);
+  margin: 0;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-container {
+  position: relative;
+  display: grid;
+  gap: 1em;
+}
+
+.reset-button {
+  color: #FFE2CF;
+  font-family: "Game of Thrones", cursive;
+
+  font-size: var(--reset-btn-font-size);
+  white-space: nowrap;
+  border: none;
+  padding: 10px 20px;
+  background-color: #241177;
+  box-shadow: 5px 5px 0 #55acee;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  position: relative;
+}
+.reset-button:hover {
+  transform: scale(1.2);
+}
+.reset-button:active {
+  top: 6px;
+  left: 6px;
+  box-shadow: none;
+  background-color: #1e4794;
+}
+
+
+.check-button {
+  color: #FFE2CF;
+  font-family: "Game of Thrones", cursive;
+
+  font-size: var(--check-btn-font-size);
+  white-space: nowrap;
+  border: none;
+  padding: 10px 20px;
+  background-color: #241177;
+  box-shadow: 5px 5px 0 #55acee;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  position: relative;
+}
+
+.check-button:hover {
+  transform: scale(1.2);
+}
+
+.check-button:active {
+  top: 6px;
+  left: 6px;
+  box-shadow: none;
+  background-color: #1e4794;
+}
+
+/* previous and next buttons styling */
+
+ .wrapper {
+  padding-top: 6.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+} 
+
+button {
+  cursor: pointer;
+}
+
+.main-buttons {
+	padding-top: 1rem;
+  cursor: pointer;
+}
+
+.button {
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+  background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+  background-color: #FFE2CF;
+  border-radius: 15px;
+  border: 4px solid #2B2727;
+
+  display: inline-block;
+  cursor: pointer;
+  color: #505739;
+  font-family: "Game of Thrones", Arial;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 12px 16px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #FFE2CF;
+}
+
+.button:hover {
+  background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+  background-color: #ccc2a6;
+  cursor: pointer;
+}
+
+.button:active {
+  position: relative;
+  top: 1px;
+  cursor: pointer;
+} 
+
+
+.hide {
+	display: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+

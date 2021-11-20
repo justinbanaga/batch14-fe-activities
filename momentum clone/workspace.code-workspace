@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\dynamic-landing-page-master"
+		},
+		{
+			"path": "..\\Momentum-main"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "momentum clone",
+		"dimmer.enabled": false
+	}
+}

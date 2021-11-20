@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by Justin Bañaga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href=".//css/main.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+
+ <header class="header">
+  <h1 id="title" class="text-center">Restaurant Survey Form</h1>
+  <p id="description" class="description text-center">
+   Thank you for taking the time to help us improve our service
+  </p>
+ </header>
+
+ <form id="survey-form">
+  <div class="form-group">
+   <label id="name-label" for="name">Name</label>
+   <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required />
+  </div>
+
+  <div class="form-group">
+   <label id="email-label" for="email">Email</label>
+   <input type="email" name="email" id="email" class="form-control" placeholder="Enter your Email" required />
+  </div>
+
+  <div class="form-group">
+   <label id="number-label" for="number">Age<span class="clue">(optional)</span></label>
+   <input type="number" name="age" id="number" min="10" max="99" class="form-control" placeholder="Age" />
+  </div>
+
+  <div class="form-group">
+   <p>Which option best describes you as a customer?</p>
+   <select id="dropdown" name="role" class="form-control" required>
+    <option disabled selected value>Select current role</option>
+    <option value="student">Student</option>
+    <option value="job">Full Time Job</option>
+    <option value="self-employed">Self Employed</option>
+    <option value="preferNo">Prefer not to say</option>
+    <option value="other">Other</option>
+   </select>
+  </div>
+
+  <div class="form-group">
+   <p>Would you recommend our restaurant to a friend?</p>
+   <label>
+    <input name="user-recommend" value="definitely" type="radio" class="input-radio" checked />Definitely</label>
+   <label>
+    <input name="user-recommend" value="maybe" type="radio" class="input-radio" />Maybe</label>
+
+   <label><input name="user-recommend" value="not-sure" type="radio" class="input-radio" />Not sure</label>
+  </div>
+
+  <div class="form-group">
+   <p>
+    What is your favorite dish?
+   </p>
+   <select id="most-like" name="mostLike" class="form-control" required>
+    <option disabled selected value>Select an option</option>
+    <option value="lasagna">Lasagna</option>
+    <option value="beef ravioli">Beef Ravioli</option>
+    <option value="ribeye">Rib-Eye</option>
+    <option value="beef stew">Beef Stew</option>
+   </select>
+  </div>
+
+  <div class="form-group">
+   <p>
+    What would you like to see improved?
+    <span class="clue">(Check all that apply)</span>
+   </p>
+
+   <label>
+    <input name="prefer" value="service" type="checkbox" class="input-checkbox" />Service</label>
+
+   <label>
+    <input name="prefer" value="staff" type="checkbox" class="input-checkbox" />Staff</label>
+
+   <label><input name="prefer" value="food" type="checkbox" class="input-checkbox" />Food</label>
+
+   <label><input name="prefer" value="management" type="checkbox" class="input-checkbox" />Management</label>
+  </div>
+
+  <div class="form-group">
+   <p>Any comments or suggestions?</p>
+   <textarea id="comments" class="input-textarea" name="comment" placeholder="Enter your comment here..."></textarea>
+  </div>
+
+  <div class="form-group">
+   <button type="submit" id="submit" class="submit-button">
+    Submit
+   </button>
+  </div>
+ </form>
+</div>
+<!-- partial -->
+  <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
